@@ -169,6 +169,16 @@ patterns:
   - include: source.ocaml
 
 - name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(xi)\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.xi
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
   begin: (```|~~~|{%\s*highlight)\s*(javascript|js)\s*((?:linenos\s*)?%})?$
   end: (```|~~~|{%\s*endhighlight\s*%})\n
   captures:
